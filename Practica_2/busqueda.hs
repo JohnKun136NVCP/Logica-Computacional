@@ -1,21 +1,10 @@
+-- Regresa verdadero o falso, buscando elemento por elemento
 busquedaLineal x [] = False
 busquedaLineal x (y:ys)
   | x == y =True
   | otherwise = busquedaLineal x ys
 
-half xs = splitAt (length xs `div` 2) xs
-
-compareAt y x xs
-  | (xs !! y) == x = 0
-  | (xs !! y) < x = -1
-  | otherwise = 1
-
-busquedaTempLista x xs ys
-  | x == (xs !! (length xs -1)) = 0
-  | x <= (xs !! (length xs -1)) = -1  
-  | x == (ys !! (length ys -1)) = 0
-   | x > (ys !! (length ys -1)) = 1
-  
+-- Regresa el indice si el elemento se encuentra en la lista  
 busquedaBinaria :: (Ord a) => a -> [a] -> Maybe Int
 busquedaBinaria _ [] = Nothing
 busquedaBinaria n xs
@@ -25,3 +14,14 @@ busquedaBinaria n xs
   where indice = length xs `quot` 2
         (as,elem:bs) = splitAt indice xs
 
+l = [1,2,3,4,5,5,6,7,8,8]
+ejemploLineal = busquedaLineal 2 l
+ejemploBinaria = busquedaBinaria 5 l
+
+main :: IO ()
+main = do
+
+  print(l)
+  print(ejemploLineal)
+  print(ejemploBinaria)
+  
